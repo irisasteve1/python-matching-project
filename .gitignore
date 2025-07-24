@@ -1,0 +1,17 @@
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# VS Code / Cursor editor folders
+.vscode/
+.idea/
+
+# Data or generated content
+*.db
+*.xlsx
+*.csv
+plots/
+
+# OS-specific
+.DS_Store
+database/*.db

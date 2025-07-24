@@ -227,4 +227,7 @@ plot_test_vs_ideal(mapped_df, ideal_data)
 # plot deviations between test points and ideal functions
 plot_deviations(mapped_df)
 
+from src.visualize import plot_test_vs_ideal_bokeh
+
+plot_test_vs_ideal_bokeh(mapped_df, ideal_data)
 # %%

@@ -14,7 +14,9 @@ This module provides visualization functions for:
 # --------------------------------------------------------------
 
 import os
+from turtle import color
 import matplotlib.pyplot as plt
+from numpy import size
 
 # Create plots folder for saved visuals
 PLOT_DIR = "plots"
@@ -121,3 +123,46 @@ def plot_deviations(test_data):
         plt.tight_layout()
         plt.savefig(os.path.join(PLOT_DIR, f"deviations_{func}.png"))
         plt.close()
+
+from bokeh.plotting import figure, show, output_file, save
+from bokeh.io import output_notebook
+from bokeh.layouts import column
+from bokeh.palettes import Category10
+import os
+
+def plot_test_vs_ideal_bokeh(test_data, ideal_data, output_dir="plots/bokeh"):
+    """
+    Interactive Bokeh plot: test points vs. ideal function.
+
+    Parameters:
+    - test_data (pd.DataFrame): must have 'x', 'y', 'matched_function'
+    - ideal_data (pd.DataFrame): must have 'x' and ideal functions
+    output_dir (str): folder to save HTML files
+
+    Returns:
+    - None
+    """
+    os.makedirs(output_dir, exist_ok=True)
+    plots = []
+
+    for i, func in enumerate(test_data['matched_function'].unique()):
+        subset = test_data[test_data['matched_function'] == func]
+        ideal_subset = ideal_data[['x', func]]
+
+        p = figure(title=f"Test vs Ideal Function: {func}", x_axis_label='x', y_axis_label='y', width=700, height=400)
+        color = Category10[10][i % 10]
+
+        # plot ideal function
+        p.line(ideal_subset['x'], ideal_subset[func],
+        legend_label=f"Ideal: {func}", color=color, line_width=2)
+
+        # plot test points
+        p.circle(subset['x'], subset['y'],
+        size=8, color='orange', legend_label='Test Points')
+
+        p.legend.location = "top_left"
+        p.grid.visible = True
+        plots.append(p)
+
+        # save individual plots
+        save(p, filename=os.path.join(output_dir, f"test_vs_{func}.html"))
