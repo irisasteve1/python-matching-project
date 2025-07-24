@@ -13,7 +13,12 @@ This module provides visualization functions for:
 # third-party imports
 # --------------------------------------------------------------
 
+import os
 import matplotlib.pyplot as plt
+
+# Create plots folder for saved visuals
+PLOT_DIR = "plots"
+os.makedirs(PLOT_DIR, exist_ok=True)
 
 # --------------------------------------------------------------
 # Plot best matches between training data and ideal data
@@ -46,7 +51,8 @@ def plot_best_matches(training_data, ideal_data, best_matches):
         plt.legend()
         plt.grid(True)
         plt.tight_layout()
-        plt.show()
+        plt.savefig(os.path.join(PLOT_DIR, f"{train_col}_vs_{ideal_col}.png"))
+        plt.close()
 
 
 # --------------------------------------------------------------
@@ -78,7 +84,8 @@ def plot_test_vs_ideal(test_data, ideal_data):
         plt.legend()
         plt.grid(True)
         plt.tight_layout()
-        plt.show()
+        plt.savefig(os.path.join(PLOT_DIR, f"test_vs_{func}.png"))
+        plt.close()
 
 
 # ----------------------------------------------------------------
@@ -112,4 +119,5 @@ def plot_deviations(test_data):
         plt.legend()
         plt.grid(True)
         plt.tight_layout()
-        plt.show()
+        plt.savefig(os.path.join(PLOT_DIR, f"deviations_{func}.png"))
+        plt.close()
