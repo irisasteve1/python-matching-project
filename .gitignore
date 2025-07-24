@@ -10,7 +10,6 @@ __pycache__/
 *.db
 *.xlsx
 *.csv
-plots/
 
 # OS-specific
 .DS_Store
