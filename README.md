@@ -68,10 +68,12 @@ This project matches training data to ideal mathematical functions using least s
 
 ## Clone the repository
 git clone https://github.com/irisasteve1/python-matching-project.git
+
 cd python-matching-project
 
 ## Create a feature branch
 git checkout -b feature/your-feature
+
 
 ## After making changes
 git add .
