@@ -55,25 +55,25 @@ This project matches training data to ideal mathematical functions using least s
 
 ---
 ## Run main program
-python main.py
+- python main.py
 ---
 
 ---
 ## Run unit tests
-pytest -v
+- pytest -v
 ---
 
 ---
 ## Contributions
 
-# Clone the repository
+## Clone the repository
 git clone https://github.com/irisasteve1/python-matching-project.git
 cd python-matching-project
 
-# Create a feature branch
+## Create a feature branch
 git checkout -b feature/your-feature
 
-# After making changes
+## After making changes
 git add .
 git commit -m "Add new feature"
 git push origin feature/your-feature
