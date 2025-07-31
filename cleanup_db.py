@@ -14,7 +14,7 @@ def drop_tables(db_path, tables_to_drop):
 
     Args:
         db_path (str): Path to the SQLite database file.
-        table_to_drop (list): List of table names to drop.
+        tables_to_drop (list of str): List of table names to drop.
 
     Returns:
         None
